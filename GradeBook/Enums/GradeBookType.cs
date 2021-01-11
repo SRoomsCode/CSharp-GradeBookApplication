@@ -4,15 +4,12 @@ using System.Text;
 
 namespace GradeBook.Enums
 {
-    public class GradeBookType
+    public enum GradeBookType
     {
-        enum MyEnum
-        {
-            Standard,
-            Ranked,
-            ESNU,
-            OneToFour,
-            SixPoint,
-        }
+        Standard,
+        Ranked,
+        ESNU,
+        OneToFour,
+        SixPoint,
     }
 }
