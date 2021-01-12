@@ -31,8 +31,18 @@ namespace GradeBook.GradeBooks
             {
                 return 'B';
             }
-
-            return 'F';
+            else if (grades[(treshold*3) -1] <= averageGrade)
+            {
+                return 'C';
+            }
+            else if (grades[(treshold*4) -1] <= averageGrade)
+            {
+                return 'D';
+            }
+            else
+            {
+                return 'F';
+            }
         }
     }
 }
