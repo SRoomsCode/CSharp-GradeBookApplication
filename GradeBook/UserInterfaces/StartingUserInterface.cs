@@ -40,23 +40,10 @@ namespace GradeBook.UserInterfaces
                 return;
             }
             var name = parts[1];
-            BaseGradeBook gradeBook = new BaseGradeBook(name);
-            Console.WriteLine("Created gradebook {0}.", name);
-            GradeBookUserInterface.CommandLoop(gradeBook);
-        }
-
-        public static void LoadCommand(string command)
-        {
-            var parts = command.Split(' ');
-            if (parts.Length != 3)
-            {
-                Console.WriteLine("Command not valid, Load requires a name.");
-                return;
-            }
-            var name = parts[1];
             var type = parts[2].ToLower();
 
             BaseGradeBook gradeBook;
+
             if (type == "standard")
                 gradeBook = new StandardGradeBook(name);
             if (type == "ranked")
@@ -68,6 +55,23 @@ namespace GradeBook.UserInterfaces
             }
 
             Console.WriteLine("Created gradebook {0}.", name);
+            GradeBookUserInterface.CommandLoop(gradeBook);
+        }
+
+        public static void LoadCommand(string command)
+        {
+            var parts = command.Split(' ');
+            if (parts.Length != 2)
+            {
+                Console.WriteLine("Command not valid, Load requires a name.");
+                return;
+            }
+            var name = parts[1];
+            var gradeBook = BaseGradeBook.Load(name);
+
+            if (gradeBook == null)
+                return;
+
             GradeBookUserInterface.CommandLoop(gradeBook);
         }
 
